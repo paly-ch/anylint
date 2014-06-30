@@ -27,8 +27,16 @@ RUN mkdir -p /linter/checkstyle
 RUN cp checkstyle-5.7/checkstyle-5.7-all.jar checkstyle-5.7/sun_checks.xml /linter/checkstyle/
 ENV CLASSPATH /linter/checkstyle/checkstyle-5.7-all.jar
 
+# Install ScalaStyle
+RUN wget https://oss.sonatype.org/content/repositories/releases/org/scalastyle/scalastyle-batch_2.10/0.5.0/scalastyle-batch_2.10-0.5.0-distribution.zip
+RUN unzip scalastyle-batch_2.10-0.5.0-distribution.zip
+RUN mkdir -p /linter/scalastyle
+RUN cp -r scalastyle-batch_2.10-0.5.0/* /linter/scalastyle/
+RUN wget http://www.scalastyle.org/scalastyle_config.xml -O /linter/scalastyle/lib/scalastyle_config.xml
+
+
 # Install Python
-RUN apt-get install -y python python3 pypy python-pip
+RUN apt-get install -y python python-pip
 RUN pip install pep8 flake8 pyflakes pylint pep257 setuptools
 
 # Install Ruby
@@ -51,8 +59,17 @@ RUN npm install -g tslint
 RUN npm install -g csslint
 RUN easy_install http://closure-linter.googlecode.com/files/closure_linter-latest.tar.gz
 
+# Install HTML, XML
+RUN apt-get install -y tidy
+RUN apt-get install -y libxml2-utils
+
 # Install C/C++
-RUN apt-get install -y gcc g++ clang
+RUN apt-get install -y gcc g++
+RUN apt-get install -y cppcheck
+
+# Install Obj-C
+# RUN apt-get install -y gobjc
+# RUN apt-get install -y clang
 
 # Install Go
 RUN apt-get install -y golang
@@ -62,3 +79,18 @@ RUN go get github.com/golang/lint/golint
 
 # # Install Perl
 RUN apt-get install -y perl libperl-critic-perl
+
+# Install Cabal
+RUN apt-get install -y cabal-install
+RUN cabal update
+
+# Install ShellCheck
+RUN cabal install shellcheck
+
+# Install HLint
+RUN cabal install hlint
+
+# Install Gendarme
+RUN apt-get install -y gendarme
+
+
