@@ -2,7 +2,8 @@
 #
 # VERSION               0.0.1
 
-FROM      ubuntu:14.04
+FROM      ubuntu
+# FROM      ubuntu:14.04
 MAINTAINER Pavel Lechenko <paly-ch@lintr.org>
 
 RUN mkdir /tmp/builder
@@ -11,7 +12,7 @@ RUN mkdir /linter
 
 # Install pre-requisites
 RUN apt-get update
-RUN apt-get install -y wget git-core
+RUN apt-get install -y wget git-core unzip
 
 # Install Java
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/webupd8team.list
@@ -33,7 +34,6 @@ RUN unzip scalastyle-batch_2.10-0.5.0-distribution.zip
 RUN mkdir -p /linter/scalastyle
 RUN cp -r scalastyle-batch_2.10-0.5.0/* /linter/scalastyle/
 RUN wget http://www.scalastyle.org/scalastyle_config.xml -O /linter/scalastyle/lib/scalastyle_config.xml
-
 
 # Install Python
 RUN apt-get install -y python python-pip
