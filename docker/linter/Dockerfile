@@ -66,6 +66,8 @@ RUN apt-get install -y libxml2-utils
 # Install C/C++
 RUN apt-get install -y gcc g++
 RUN apt-get install -y cppcheck
+RUN mkdir -p /linter/cpplint
+ADD cpplint.py /linter/cpplint/cpplint.py
 
 # Install Obj-C
 # RUN apt-get install -y gobjc
