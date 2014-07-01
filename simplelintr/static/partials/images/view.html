@@ -1,0 +1,26 @@
+<div class="table-responsive" ng-controller="ImagesController">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Repository</th>
+          <th>Tag</th>
+          <th>Image ID</th>
+          <th>Created</th>
+          <th>Virtual Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="image in images">
+          <td>
+              <p ng-repeat="repo in image.Repositories">{{ repo }}</p>
+          </td>
+          <td>
+              <p ng-repeat="tag in image.Tags">{{ tag }}</p>
+          </td>
+          <td>{{ image.Image }}</td>
+          <td>{{ image.Created }}</td>
+          <td>{{ image.Size }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

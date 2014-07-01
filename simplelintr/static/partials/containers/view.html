@@ -1,0 +1,30 @@
+<div class="table-responsive" ng-controller="ContainerController">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Command</th>
+          <th>Created</th>
+          <th>Status</th>
+          <th>Ports</th>
+          <th>Names</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="container in containers">
+          <td>{{ container.Id }}</td>
+          <td>{{ container.Image }}</td>
+          <td>{{ container.Command }}</td>
+          <td>{{ container.Created }}</td>
+          <td>{{ container.Status }}</td>
+          <td>
+              <p ng-repeat="portBinding in container.Ports">{{ getStringForBinding(portBinding) }}</p>
+          </td>
+          <td>
+              <p ng-repeat="name in container.Names">{{ name }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

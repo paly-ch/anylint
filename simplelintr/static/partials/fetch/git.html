@@ -1,0 +1,33 @@
+<form role="form" ng-controller="FetchGitController">
+   <div class="form-group">
+      <label for="name">URL to your repo</label>
+      <input type="text" class="form-control" id="giturl">
+       <p class="help-block">This is the path to the directory containing the Dockerfile, not the path to the Dockerfile itself.</p>
+   </div>
+
+   <div class="form-group">
+      <label for="name">Tag</label>
+      <input type="text" class="form-control" id="branch">
+       <p class="help-block">Tag the new image. Can be left empty.</p>
+   </div>
+
+    <label class="checkbox" for="nocache">
+      <input id="nocache" value="No cache" type="checkbox">
+      No cache
+    </label>
+    <p class="help-block">Will run a full build. Ignoring any cached containers.</p>
+    <label class="checkbox" for="rm">
+      <input id="rm" value="Remove intermediate containers when done" type="checkbox">
+      Remove intermediate containers
+    </label>
+    <p class="help-block">Will remove the cached intermediate containers at the end of the build.</p>
+    <label class="checkbox" for="quiet">
+      <input id="quiet" value="Quiet" type="checkbox">
+      Quiet
+    </label>
+    <p class="help-block">Suppress verbose output.</p>
+    <br>
+   <button type="button" class="btn btn-default" ng-click="fetchGit()">Fetch Git</button>
+</form>
+
+

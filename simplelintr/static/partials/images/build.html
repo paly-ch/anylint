@@ -1,0 +1,37 @@
+<form role="form" ng-controller="ImageBuilderController">
+   <div class="form-group">
+      <label for="name">Dockerfile Directory</label>
+      <input type="text" class="form-control" id="dockerfile-directory">
+       <p class="help-block">This is the path to the directory containing the Dockerfile, not the path to the Dockerfile itself.</p>
+   </div>
+
+   <div class="form-group">
+      <label for="name">Tag</label>
+      <input type="text" class="form-control" id="tag">
+       <p class="help-block">Tag the new image. Can be left empty.</p>
+   </div>
+
+    <label class="checkbox" for="nocache">
+      <input id="nocache" value="No cache" type="checkbox">
+      No cache
+    </label>
+    <p class="help-block">Will run a full build. Ignoring any cached containers.</p>
+    <label class="checkbox" for="rm">
+      <input id="rm" value="Remove intermediate containers when done" type="checkbox">
+      Remove intermediate containers
+    </label>
+    <p class="help-block">Will remove the cached intermediate containers at the end of the build.</p>
+    <label class="checkbox" for="quiet">
+      <input id="quiet" value="Quiet" type="checkbox">
+      Quiet
+    </label>
+    <p class="help-block">Suppress verbose output.</p>
+    <br>
+   <button type="button" class="btn btn-default" ng-click="build()">Build</button>
+</form>
+
+
+<label style="margin-top: 30px;">Build log</label><br>
+<textarea id="build-log" disabled style="width: 100%; height: 20%;">
+
+</textarea>
